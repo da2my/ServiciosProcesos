@@ -11,7 +11,7 @@ int main(void)
     int p, bytesleidos;
     char saludo[] = "Un saludo!!!\n", buffer[10];
 
-    p = mknod("FIFO2", S_IFIFO | 0666, O_RDWR); //permiso de lectura y escritura
+    p = mknod("FIFO2", S_IFIFO | 0666, 0); //permiso de lectura y escritura
 
     if (p == -1)
     {
@@ -20,7 +20,7 @@ int main(void)
     }
     while (1)
     {
-        fp = open("FIFO2", O_RDONLY);
+        fp = open("FIFO2", 0);
         bytesleidos = read(fp, buffer, 1);
         printf("OBTENIENDO Informacion...");
         while (bytesleidos != 0)
